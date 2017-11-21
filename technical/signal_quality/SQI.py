@@ -1,3 +1,7 @@
+import numpy as np
+from scipy.signal import welch
+from scipy import integrate
+
 def SQI( signal, break_frequency):
     """
     This function calculates the power spectral density of the 'signal' and calulates the ratio of the signal energy below the 'break_frequency' against the total signal energy. 
