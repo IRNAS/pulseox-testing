@@ -1,4 +1,8 @@
 import numpy as np
+def generate_noise(mean, std, length):
+    noise = np.random.normal(mean, std, length)
+    return noise
+
 def find_index(clean_signal, std_list):
     """
     This function takes every element i from the list of standard deviation values 'std_list' and generates the random noise with the respective standard deviation. The mean and length of the noise signal equal to the ones of the clean signal. The noise is than added to the clean signal and the SQI is calculated.
