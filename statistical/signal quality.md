@@ -10,4 +10,4 @@ SQI has to be validated statistically by following the following procedure:
   2. Read the data into your PC and save the log file.
   3. perform this procedure in both finger clip orientations on the index finger and on the pinky (4 measurements all together).
   
-  Repeat this procedure on **___** samples and then run the SQI_stats.py code to perform SQI analysis through the whole database.
+  Repeat this procedure on **X** samples and then run the SQI_stats.py code to perform SQI analysis through the whole database. Perform statistical analysis to find 95% confidence interval.
