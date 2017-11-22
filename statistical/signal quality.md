@@ -3,6 +3,7 @@
 SQI has to be validated statistically by following the following procedure:
 
   0a. Have two devices ready, one with clean firmware (device A) and one with debug firmware (device B) flashed on them.
+  
   0b. Get the finger clip ready and instruct the volunteer to rest their arm on the table and not move during the measurement. 
   
   1. Perform a simple attributed data test on a sample using the device A.
