@@ -25,6 +25,7 @@ SQI has to be validated statistically by following the following procedure:
  Orientation legend is as follows:
  
  ||LED|SENSOR|
+ |------|--------|--------|
  |UP|tip|nail|
  |DOWN|nail|tip|
    
