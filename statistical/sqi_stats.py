@@ -170,11 +170,11 @@ if __name__=='__main__':
         #glia index
         red_index = SQI(dc_red, 3.3)
         index_red.append(round(red_index,2))
-        warn_red = check_index(red_index, 0.3, 0.85)    # check warning range
+        warn_red = check_index(red_index, 0.3, 0.85)    # TO DO: check warning range statistically, default found analytically to be between 30% and 85%
            
         ir_index = SQI(dc_ir, 3.3)
         index_ir.append(round(ir_index,2))
-        warn_ir = check_index(ir_index, 0.2, 0.95)      # check warning range
+        warn_ir = check_index(ir_index, 0.2, 0.95)      # TO DO: check warning range statistically, default found analytically to be between 20% and 95%
         
         
         
