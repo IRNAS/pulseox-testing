@@ -1,4 +1,4 @@
-# Statistical Trials for SQI Investigation
+# Statistical Trials for Pulse-Oximeter Probe Performance
 
 SQI has to be validated statistically by following the following procedure:
 
