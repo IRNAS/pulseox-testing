@@ -35,5 +35,5 @@ Run the SQI_stats.py code to perform SQI analysis.
 Since the device is medium-risk (Class II FDA) we need at least 95% confidence interval and 95% reliability therefore the minimum number of samples is 59 for zero defect sampling, 93 for 1 defect sampling and 124 for 2 defect sampling.
 
 References:
-  -[Tony Gojanovic: Zero Defect Sampling (2007)](http://asq.org/quality-progress/2007/11/basic-quality/zero-defect-sampling.html)
-  -[Mark Durivage: Sample Sizes: How Many Do I Need? (2014)](https://www.qualitymag.com/articles/91991-sample-sizes-how-many-do-i-need)
+  - [Tony Gojanovic: Zero Defect Sampling (2007)](http://asq.org/quality-progress/2007/11/basic-quality/zero-defect-sampling.html)
+  - [Mark Durivage: Sample Sizes: How Many Do I Need? (2014)](https://www.qualitymag.com/articles/91991-sample-sizes-how-many-do-i-need)
