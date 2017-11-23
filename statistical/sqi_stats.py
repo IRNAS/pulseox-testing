@@ -26,7 +26,7 @@ def load_dataset_2(filename):
     """
     This function reads the .txt file and outputs all data series as variables.
     """
-    data = pandas.read_csv(filename, header=None, names=['ts', 'raw_ir', 'dc_ir', 'mean_ir', 'butt_ir', 'dc_red','raw_orange','raw_yellow','norm_ir','norm_red','butt_norm_ir','butt_norm_red','ratio','ambient'])
+    data = pandas.read_csv(filename, header=None, names=['ts', 'raw_ir', 'dc_ir', 'mean_ir', 'butt_ir', 'dc_red','raw_orange','raw_yellow','norm_ir','norm_red','butt_norm_ir','butt_norm_red','ratio','ambient','raw_red'])
     time = data['ts']
     time = data['ts'] - data['ts'][0]
     time = time/100
@@ -43,7 +43,8 @@ def load_dataset_2(filename):
     b_n_red = data['butt_norm_red']
     b_n_ir = data['butt_norm_ir']
     ratio = data['ratio']
-    return time, raw_ir, dc_ir, mean_ir, butt_ir, dc_red, raw_orange, raw_yellow, norm_red, norm_ir, b_n_red, b_n_ir, ratio
+    raw_red = data['raw_red']
+    return time, raw_ir, dc_ir, mean_ir, butt_ir, dc_red, raw_orange, raw_yellow, norm_red, norm_ir, b_n_red, b_n_ir, ratio, raw_red
         
         
 def butter_lowpass(cut, fs, order=5):
@@ -159,7 +160,7 @@ if __name__=='__main__':
 
     for filename in directory:
         # data load in            
-        time, raw_ir, dc_ir, _, _, dc_red, _, _, _, _, _, _, _ = load_dataset_2(filename)
+        time, raw_ir, dc_ir, _, _, dc_red, _, _, _, _, _, _, _, raw_red = load_dataset_2(filename)
             
         # low pass filters
         dc_ir_ftd = butter_lowpass_filter(dc_ir, 3.3, 100, order=2)
@@ -170,11 +171,11 @@ if __name__=='__main__':
         #glia index
         red_index = SQI(dc_red, 3.3)
         index_red.append(round(red_index,2))
-        warn_red = check_index(red_index, 0.3, 0.85)    # TO DO: check warning range statistically, default found analytically to be between 30% and 85%
+        warn_red = check_index(red_index, 0.3, 0.85)    # check warning range
            
         ir_index = SQI(dc_ir, 3.3)
         index_ir.append(round(ir_index,2))
-        warn_ir = check_index(ir_index, 0.2, 0.95)      # TO DO: check warning range statistically, default found analytically to be between 20% and 95%
+        warn_ir = check_index(ir_index, 0.2, 0.95)      # check warning range
         
         
         
