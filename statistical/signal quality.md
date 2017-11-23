@@ -8,7 +8,7 @@ SQI has to be validated statistically by following the following procedure:
   
   
   ## TEST A
-  Plug the finger clip into device A. Instruct the patient to mount the finger clip on their index finger in any orientation.
+  Plug the finger probe into device A. Instruct the patient to mount the finger clip on their index finger in any orientation.
   
   Requirements: 
   - the device must run flawlessly showing both SpO2% and HR values for at least 30s. 
