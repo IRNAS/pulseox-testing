@@ -2,9 +2,9 @@
 
 SQI has to be validated statistically by following the following procedure:
 
-  Pre-step 1: Have two devices ready, one with 'clean firmware' (device A) and one with 'debug firmware' (device B) flashed on them.
-  Pre-step 2: Connect the UART bridge to the device B so that it is ready to send data to the PC.
-  Pre-step 3: Get the finger clip ready and instruct the volunteer to rest their arm on the table and not move during the measurement. 
+  - Pre-step 1: Have two devices ready, one with 'clean firmware' (device A) and one with 'debug firmware' (device B) flashed on them.
+  - Pre-step 2: Connect the UART bridge to the device B so that it is ready to send data to the PC.
+  - Pre-step 3: Get the finger clip ready and instruct the volunteer to rest their arm on the table and not move during the measurement. 
   
   
   ## TEST A
