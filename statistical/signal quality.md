@@ -29,4 +29,7 @@ SQI has to be validated statistically by following the following procedure:
  |UP|tip|nail|
  |DOWN|nail|tip|
    
-Run the SQI_stats.py code to perform SQI analysis. Since the device is low risk we need at least 95% confidence interval and 90% reliability therefore the minimum number of samples is 29 for zero defect sampling, 46 for 1 defect sampling and 61 for 2 defect sampling.
+Run the SQI_stats.py code to perform SQI analysis. 
+
+## Device Classification
+Since the device is medium-risk (Class II FDA) we need at least 95% confidence interval and 95% reliability therefore the minimum number of samples is 59 for zero defect sampling, 93 for 1 defect sampling and 124 for 2 defect sampling.
