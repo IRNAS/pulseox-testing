@@ -1,34 +1,24 @@
 import numpy as np
-from scipy.signal import welch
-from scipy import integrate
 
-def SQI( signal, break_frequency):
+
+def get_p2p_amp(signal, locs):
     """
-    This function calculates the power spectral density of the 'signal' and calulates the ratio of the signal energy below the 'break_frequency' against the total signal energy. 
-    
-    Created on 2017 Nov 19 
-
-  @ author: Luka Banovic
-  @ email: banovic@irnas.eu
+	signal = Low-Pass filtered DC signal
     """
-
-    # PSD calculation
-    freqs, p_signal = welch(signal, fs=100)
-
-    # normalization       
-    p_signal = p_signal/max(p_signal)
-
-    # break point
-    start_point = np.argmax(freqs>break_frequency)
-
-    # frequency step for integration
-    dx = freqs[1]
+    max_p2p_mean = np.mean(np.abs(signal[locs]))
+    amp = 2*max_p2p_mean
     
-    # integration
-    int_sig = integrate.trapz(p_signal[:start_point], dx=dx)
-    int_total = integrate.trapz(p_signal, dx=dx)
+    return amp
+
+def SQI( signal, noise, locs):
+    """
+	signal = clean signal - DC-filtered and Low-Pass filtered below 3.3Hz
+	noise = raw signal DC-filtered and High-Pass filtered above 3.3Hz
+	locs = trough locations [trough_decection(signal, treshold=0)]
+    """
+    STD = np.sqrt(np.var(noise))		# noise standard deviation
+    AMP = get_p2p_amp(signal, locs)		# signal amplitude
     
-    # index calculation    
-    SQI = int_sig/int_total
+    SQI = 1 - STD/AMP
     
-    return SQI
+    return SQI, AMP, STD
