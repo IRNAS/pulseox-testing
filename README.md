@@ -1,6 +1,6 @@
 # pulseox-testing
 
-This repository contains all data and algorithms for device testing. The tests are done both analytically, by generating raw data and analyzing their behaviour, and statistically, by observing values in tests on human subjects and analysing them though statistics.
+This repository contains procedures and algorithms for device testing.
 
 ---
 
