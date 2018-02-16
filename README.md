@@ -1,6 +1,11 @@
 # pulseox-testing
 
-This repository contains procedures and algorithms for device testing.
+This repository contains procedures and algorithms for device testing. All necessary firmware can be found in *firmware_test_debug* folder.
+
+1. In *01_firmware_flashing_instructions.md* you can find instrutions on how to flash the firmware onto the device.
+2. In *02_LED_test.md* you can read how to test if all your LEDs are working.
+3. In *03_debugging.md* you can find instructions on how to record the data from your device, save it to your PC and visualize it
+4. *04_data_processing.py* is a Python script that enables you to read and plot the data, as well as find peaks.
 
 ---
 
