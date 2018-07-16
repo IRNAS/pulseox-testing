@@ -32,7 +32,7 @@ and in particular you may not use them to imply endorsement or authorization of 
 
 
 import os
-os.chdir(r'/home/irnas/Documents/GliaX/pulseoxi/python')
+os.chdir(r'')       # insert working directory here
 import pandas
 import numpy as np
 from scipy.signal import butter, filtfilt
