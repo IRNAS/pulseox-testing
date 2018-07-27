@@ -6,7 +6,7 @@ Test firmware is used to optimize calibration parameters such that the device re
   
   1. Flash test firmware onto Glia Pulse Oximeter as instructed [here](https://github.com/IRNAS/pulseox-testing/blob/master/01_firmware_flashing_instructions.md)
   
-  2. Turn the pulse oximeter OFF and ON again.
+  2. Unplug the programmer board and reset the pulse oximeter by turning it OFF and ON again
   
   3. The display will show "FINGER OUT" sign until patient's finger is inserted. Once finger is inserted "CALIBRATING..." sign will show up. The calibration is now initialized.
   
