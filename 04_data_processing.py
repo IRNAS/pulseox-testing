@@ -9,25 +9,6 @@ This script enables you to load the logged data from your GliaX pulse oximeter. 
 
 fs = 100 samples/second
 fc = 3.3Hz - the heart beats up to 200bpm can be detected
-
-A series of values in one row are:
-  
-  - timestamp ('ts')
-  - raw IR value ('raw_ir)
-  - dc filtered IR ignal ('dc_ir')
-  - mean filtered IR signal ('mean_ir')
-  - low pass filtered IR signal ('butt_ir')
-  - dc filtered RED signal (dc_red)
-  - raw orange signal (raw_orange)
-  - raw yellow signal (raw_yellow)
-  - normalised IR signal (norm_ir)
-  - normalised RED signal (norm_red)
-  - low pass filtered normalised IR signal (butt_norm_ir)
-  - low pass filtered normalised RED signal (butt_norm_red)
-  - ratio between IR and red ('ratio')
-  - ambient light ('ambient')
-
-
 Copyright (C) 2018 Luka Banovic <banovic@irnas.eu>
 
 All projects of Institute IRNAS are as usefully open-source as possible.
@@ -72,7 +53,7 @@ def load_dataset(filename):
     """
 	This function reads the data from a .txt file.
     """
-    data = pandas.read_csv(filename, header=None, names=['ts', 'raw_ir', 'dc_ir', 'mean_ir', 'butt_ir', 'dc_red', 'butt_red', 'raw_orange','raw_yellow','norm_ir','norm_red','butt_norm_ir','butt_norm_red','ratio','ambient','raw_red'])
+    data = pandas.read_csv(filename, header=None, names=['ts', 'raw_ir', 'dc_ir', 'mean_ir', 'butt_ir', 'noise_ir', 'dc_red', 'butt_red', 'noise_red', 'raw_orange','raw_yellow','norm_ir','norm_red','butt_norm_ir','butt_norm_red','ratio','ambient','raw_red', 'ir_brightness', 'red_brightness', 'sqi_ir', 'sqi_red'])
     time = data['ts']
     time = data['ts'] - data['ts'][0]
     time = time/1000
@@ -81,8 +62,10 @@ def load_dataset(filename):
     dc_ir = data['dc_ir']/100
     mean_ir = data['mean_ir']/100
     butt_ir = data['butt_ir']/100
+    noise_ir = data['noise_ir']/100
     dc_red = data['dc_red']/100
     butt_red = data['butt_red']/100
+    noise_red = data['noise_red']/100
     raw_orange = data['raw_orange']
     raw_yellow = data['raw_yellow']
     norm_red = data['norm_red']/100000
@@ -92,7 +75,12 @@ def load_dataset(filename):
     ratio = data['ratio']/100
     ambient = data['ambient']
     raw_red = data['raw_red']
-    return time, raw_ir, dc_ir, mean_ir, butt_ir, dc_red, butt_red, raw_orange, raw_yellow, norm_red, norm_ir, b_n_red, b_n_ir, ratio, ambient, raw_red        
+    ir_brightness = data['ir_brightness']
+    red_brightness = data['red_brightness']
+    sqi_ir = data['sqi_ir']/100
+    sqi_red = data['sqi_red']/100
+	
+    return ts, raw_ir, dc_ir, mean_ir, butt_ir, noise_ir, dc_red, butt_red, noise_red, raw_orange, raw_yellow, norm_ir, norm_red, butt_norm_ir, butt_norm_red, ratio, ambient, raw_red, ir_brightness, red_brightness, sqi_ir, sqi_red  
     
 def butter_lowpass(cut, fs, order=2):
     nyq = 0.5 * fs
@@ -154,50 +142,15 @@ def trough_decection(signal, treshold):
     peaks = peaks[0]
     return peaks
 
-def get_p2p_amp(signal, locs):
-    """
-	signal = Low-Pass filtered DC signal
-    """
-    max_p2p_mean = np.mean(np.abs(signal[locs]))
-    amp = 2*max_p2p_mean
-    
-    return amp
-
-def SQI( signal, noise, locs):
-    """
-	signal = clean signal - DC-filtered and Low-Pass filtered below 3.3Hz
-	noise = raw signal DC-filtered and High-Pass filtered above 3.3Hz
-	locs = trough locations [trough_decection(signal, treshold=0)]
-    """
-    STD = np.sqrt(np.var(noise))		# noise standard deviation
-    AMP = get_p2p_amp(signal, locs)		# signal amplitude
-    
-    SQI = 1 - STD/AMP
-    
-    return SQI, AMP, STD
-
 """======================================================================="""   
 filename = 'MyPulseoxData.txt'        # insert the filename of the file where your data is stored
 
-# here, time, raw_ir, dc_ir, butt_ir, dc_red, butt_red and raw_red data are collected. Should you wish to inspect any other set of data,
-# replace the respective "_" with the variable name found in 'load_dataset' function.
-time, raw_ir, dc_ir, _, butt_ir, dc_red, butt_red, _, _, _, _, _, _, _, _, raw_red = load_dataset(filename)
+"""
+Here, time, raw_ir, butt_ir, butt_red and raw_red data are collected. Should you wish to inspect any other set of data, replace the respective "_" with the variable name found in 'load_dataset' function.
+
+LIST OF VARIABLES:
+['ts', 'raw_ir', 'dc_ir', 'mean_ir', 'butt_ir', 'noise_ir', 'dc_red', 'butt_red', 'noise_red', 'raw_orange','raw_yellow','norm_ir','norm_red','butt_norm_ir','butt_norm_red','ratio','ambient','raw_red', 'led_brightness', 'red_brightness', 'sqi_ir', 'sqi_red']
+"""
+
+time, raw_ir, _, _, butt_ir, _, _, butt_red, _, _, _, _, _, _, _, _, _, raw_red, _, _, _, _ = load_dataset(filename)
 peaks = trough_decection(butt_ir, treshold=0)
-
-
-# SQI analysis
-
-ir_noise = butter_highpass_filter(raw_ir, 3.3, 100, order=2)
-red_noise = butter_highpass_filter(raw_red, 3.3, 100, order=2)
-
-buffer_start = peaks[int(np.floor(len(peaks))/2)-3]
-buffer_end = peaks[int(np.floor(len(peaks))/2)+3]
-
-sqi_peaks = peaks[int(np.floor(len(peaks))/2)-3:int(np.floor(len(peaks))/2)+3]
-
-sqi_ir, amp_ir, std_ir = SQI(butt_ir[buffer_start:buffer_end], ir_noise[buffer_start:buffer_end], sqi_peaks)
-sqi_red, amp_red, std_red = SQI(butt_red[buffer_start:buffer_end], red_noise[buffer_start:buffer_end], sqi_peaks)
-
-plt.plot(time, raw_ir)
-plt.plot(time, raw_red)
-
