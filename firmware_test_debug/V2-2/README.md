@@ -12,7 +12,7 @@ Test firmware is used to optimize calibration parameters such that the device re
   
   3. Once the calibration is complete, the values on the screen will show up showing the optimal IR brightness level, RED brightness level and DURATION of calibration. 
   
-  4. Log all values and description of conditions (skin color, age, finger thickness etc.).
+  4. Log all values in `brightness_test_log.ods` file, including description of conditions (skin color, age, finger thickness etc.).
   
   The current firmware will be adjusted at the next stage based on these logged values and final functional release will be made.
   
