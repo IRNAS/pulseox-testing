@@ -4,7 +4,9 @@ In this folder you can find debug and clean [firmware of device V2-2](https://gi
 
 FILE: ```debug_V2-2.bin``` 
 
-Debug firmware allows to transmit all variables onto the PC and inspect them (instructions can be found [here](https://github.com/IRNAS/pulseox-testing/blob/master/03_debugging.md)). To select which values shold be sent out comment or uncomment sections [here](https://github.com/IRNAS/pulseox-firmware/blob/af077f9e98fd172e49468021324ba2b3dae9d09e/src/measurement.c#L648-L702). Make sure to adjust the [respective line](https://github.com/IRNAS/pulseox-testing/blob/0bfbcddb8c8559ee553e9b756a0ef46e382c40d1/04_data_processing.py#L184) in [`04_data_processing.py`](https://github.com/IRNAS/pulseox-testing/blob/master/04_data_processing.py) Python script.
+Debug firmware allows to transmit all variables via UART to the PC and inspect them (instructions can be found [here](https://github.com/IRNAS/pulseox-testing/blob/master/03_debugging.md)). To select which values are desired to be sent out comment or uncomment sections [here](https://github.com/IRNAS/pulseox-firmware/blob/af077f9e98fd172e49468021324ba2b3dae9d09e/src/measurement.c#L648-L702). 
+
+Adapt and run [`04_data_processing.py`](https://github.com/IRNAS/pulseox-testing/blob/master/04_data_processing.py) Python script to visualize data. Make sure to adjust the [respective line](https://github.com/IRNAS/pulseox-testing/blob/0bfbcddb8c8559ee553e9b756a0ef46e382c40d1/04_data_processing.py#L184) such that the readin variables match the sent-out variables.
   
  **CLEAN FIRMWARE**
  
@@ -12,4 +14,4 @@ Debug firmware allows to transmit all variables onto the PC and inspect them (in
  
  Clean firmware allows normal device operation. 
  
- Disclaimer: Currently, default initial brightness levels are implemented, therefore potential delay of procedure can be expected under certain conditions (thinner fingers, darker skin color etc.) due to longer calibration time. Upon completion of the procedure described [in this issue](https://github.com/IRNAS/pulseox-testing/issues/2), this risk can be addressed and reduced by optimization of initial parameters. For this,`test_V2-2.bin` should be used.
+ Disclaimer: Currently, default initial brightness levels are implemented, therefore potential delay of procedure can be expected under certain conditions (thinner fingers, darker skin color etc.) due to longer calibration time. Upon completion of the procedure described [in this issue](https://github.com/IRNAS/pulseox-testing/issues/2), this risk can be addressed and reduced by optimization of initial parameters. For this,`test_V2-2.bin` test firmware should be used.
