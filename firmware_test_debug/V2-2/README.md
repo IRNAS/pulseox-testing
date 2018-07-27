@@ -1,4 +1,4 @@
-In this folder you can find test and clean firmware of device V2-2.
+In this folder you can find test and clean [firmware of device V2-2](https://github.com/IRNAS/pulseox-firmware/tree/V2-2).
 
 **TEST FIRMWARE**
 
