@@ -4,7 +4,7 @@ In this folder you can find debug and clean [firmware of device V2-2](https://gi
 
 FILE: ```debug_V2-2.bin``` 
 
-Debug firmware allows to transmit all variables onto the PC and inspect them (as described [here](https://github.com/IRNAS/pulseox-testing/blob/master/03_debugging.md)).
+Debug firmware allows to transmit all variables onto the PC and inspect them (instructions can be found [here](https://github.com/IRNAS/pulseox-testing/blob/master/03_debugging.md)). To select which values shold be sent out comment or uncomment sections [here](https://github.com/IRNAS/pulseox-firmware/blob/af077f9e98fd172e49468021324ba2b3dae9d09e/src/measurement.c#L648-L702).
   
  **CLEAN FIRMWARE**
  
