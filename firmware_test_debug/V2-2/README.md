@@ -22,5 +22,7 @@ Test firmware is used to optimize calibration parameters such that the device re
  
  FILE: `clean_V2-2.bin`
  
- Clean firmware allows normal device operation. Currently, default initial brightness levels are implemented, therefore potential delay of procedure can be expected under certain conditions (thinner fingers, darker skin color etc.) due to longer calibration time. Upon completion of the procedure described above, this risk can be addressed and reduced by optimization of initial parameters.
+ Clean firmware allows normal device operation. 
+ 
+ Disclaimer: Currently, default initial brightness levels are implemented, therefore potential delay of procedure can be expected under certain conditions (thinner fingers, darker skin color etc.) due to longer calibration time. Upon completion of the procedure described above, this risk can be addressed and reduced by optimization of initial parameters.
   
