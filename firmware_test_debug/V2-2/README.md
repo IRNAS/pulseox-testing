@@ -16,7 +16,7 @@ Adapt and run [`04_data_processing.py`](https://github.com/IRNAS/pulseox-testing
  
  **DEFAULT BRIGHTNESS VALUES TEST FIRMWARE**
  
-Currently, default initial brightness levels are implemented, therefore potential delay of procedure can be expected under certain conditions (thinner fingers, darker skin color etc.) due to longer calibration time. Upon completion of the procedure described [in this issue](https://github.com/IRNAS/pulseox-testing/issues/2), this risk can be addressed and reduced by optimization of initial parameters. For this,`test_V2-2.bin` test firmware should be used.
+Currently, default initial brightness levels are implemented, therefore potential delay of procedure can be expected under certain conditions (thinner fingers, darker skin color etc.) due to longer calibration time. Upon completion of the procedure described [in this issue](https://github.com/IRNAS/pulseox-testing/issues/2), this risk can be addressed and reduced by optimization of initial parameters. For this,`CalibrationTest.bin` test firmware should be used.
 
 **SpO2 CALIBRATION FIRMWARE**
 
