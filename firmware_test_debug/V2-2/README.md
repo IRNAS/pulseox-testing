@@ -14,6 +14,12 @@ Adapt and run [`04_data_processing.py`](https://github.com/IRNAS/pulseox-testing
  
  Clean firmware allows normal device operation. 
  
- **TEST FIRMWARE**
+ **DEFAULT BRIGHTNESS VALUES TEST FIRMWARE**
  
 Currently, default initial brightness levels are implemented, therefore potential delay of procedure can be expected under certain conditions (thinner fingers, darker skin color etc.) due to longer calibration time. Upon completion of the procedure described [in this issue](https://github.com/IRNAS/pulseox-testing/issues/2), this risk can be addressed and reduced by optimization of initial parameters. For this,`test_V2-2.bin` test firmware should be used.
+
+**SpO2 CALIBRATION FIRMWARE**
+
+ FILE: `SpO2_calibration.bin`
+ 
+ SpO2 calibration firmware enables calibration of [SpO2 lookup table](https://github.com/IRNAS/pulseox-firmware/blob/f282f3d84f418357f4f4f78a77d248b9474a79d6/src/spo2.h#L25-L30). The instructions for testing can be found  [in this issue](https://github.com/IRNAS/pulseox-testing/issues/3). 
