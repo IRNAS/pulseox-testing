@@ -6,6 +6,7 @@ For flashing the firmware onto the MCU we are using the [Nucleo64 board programm
 
 <img src="https://user-images.githubusercontent.com/14543226/31545279-ee7916ba-b01e-11e7-9460-3babfc17405f.PNG" alt="nucleo_board" width= "400" >
 
+0. Remove jumpers from CN2 connector.
 1. Use the top 4 pins of the 6-pin connector (CN4) on the STM programmer to hook up the MCU.
 
 <img src="https://user-images.githubusercontent.com/14543226/31545231-d2702bfc-b01e-11e7-88f5-e918a634aabc.PNG" alt="programmer_pinout" width= "400" >
@@ -16,6 +17,8 @@ For flashing the firmware onto the MCU we are using the [Nucleo64 board programm
 |2 - SWCLK|CK|
 |3 - GND|GND|
 |4 - SWDIO|IO|
+
+
 
 2. Connect your GliaX pulse oximeter with the PC with a microUSB cable and turn the switch to ON.
 3. Connect the programmer with your PC with miniUSB wire.
