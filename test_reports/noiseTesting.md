@@ -3,7 +3,7 @@
 ## Introduction
 It was found during performance testing that Glia pulse oximeter V2.2 fails at low amplitude signals due to masking. The useful signal is masked by noise which results in failure of peak/trough recognition. Trough recognition is the baseline for further signal processing in the device. Therefore, the device has been split into segments on which noise testing will be performed in order to investigate the noise sources.
 
-![komplet](https://user-images.githubusercontent.com/14543226/52116790-593dcd00-2612-11e9-827b-da0790edb97f.png)
+![komplet 1](https://user-images.githubusercontent.com/14543226/52118343-57760880-2616-11e9-90a5-31a27dc1f93a.png)
 
 ## Light To Voltage Transmitter (TSL251) Noise Test
 
