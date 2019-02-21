@@ -11,6 +11,16 @@ fs = 100 samples/second
 fc = 3.3Hz - the heart beats up to 200bpm can be detected
 Copyright (C) 2018 Luka Banovic <banovic@irnas.eu>
 
+REQUIREMENTS:
+	- Python3
+		- packages:
+			-- numpy
+			-- pandas
+			-- scipy
+			-- matplotlib
+
+Save this script in the same folder as your recorded .txt files.
+
 All projects of Institute IRNAS are as usefully open-source as possible.
 
 Firmware and software originating from the project is licensed under GNU GENERAL PUBLIC LICENSE v3
@@ -40,9 +50,6 @@ Created on 2017 Nov 19
 @ email: banovic@irnas.eu
 """
 
-
-import os
-os.chdir(r'')			# insert the path to working directory
 import pandas
 import numpy as np
 from scipy.signal import butter, filtfilt
@@ -51,7 +58,13 @@ import matplotlib.pyplot as plt
 
 def load_dataset(filename):
     """
-	This function reads the data from a .txt file.
+	This function reads the data from a .txt file. 
+	
+	!!! The user must synchronise variables in this functon with variables that are printed out in the device firmware.!!!
+	
+	:param: filename - str() of the 'MyLogFile.txt' where the recorded data are stored
+	
+	:output: a set of variables of recorded signals
     """
     data = pandas.read_csv(filename, header=None, names=['ts', 'raw_ir', 'dc_ir', 'mean_ir', 'butt_ir', 'noise_ir', 'dc_red', 'butt_red', 'noise_red', 'raw_orange','raw_yellow','norm_ir','norm_red','butt_norm_ir','butt_norm_red','ratio','ambient','raw_red', 'ir_brightness', 'red_brightness', 'sqi_ir', 'sqi_red'])
     time = data['ts']
@@ -81,30 +94,69 @@ def load_dataset(filename):
     sqi_red = data['sqi_red']/100
 	
     return ts, raw_ir, dc_ir, mean_ir, butt_ir, noise_ir, dc_red, butt_red, noise_red, raw_orange, raw_yellow, norm_ir, norm_red, butt_norm_ir, butt_norm_red, ratio, ambient, raw_red, ir_brightness, red_brightness, sqi_ir, sqi_red  
-    
+"""    
+COMMENT OUT THIS SECTION IF YOU WANT TO DO ANY MANUAL SIGNAL PROCESSING
+
+# This section includes functions that perform low-pass and high-pass filterring on the signals
+
 def butter_lowpass(cut, fs, order=2):
+    '''
+    :param: cut - float() cutoff frequency (Hz)
+    :param: fs - float() sampling frequency (Hz)
+    :param: order - int() filter order
+    
+    :output: b,a filter parameters
+    
+    '''
     nyq = 0.5 * fs
     cut = cut / nyq
     b, a = butter(order, [cut], btype='low')
     return b, a
 
 def butter_lowpass_filter(data, cut, fs, order=2):
+    '''
+    :param: data - np.array() a dataset on which filterring is performed
+    :param: cut - float() cutoff frequency (Hz)
+    :param: fs - float() sampling frequency (Hz)
+    :param: order - int() filter order
+    
+    :output: b,a filter parameters
+    
+    '''
     b, a = butter_lowpass(cut, fs, order=order)
     y = filtfilt(b, a, data)
     return y
 
 def butter_highpass(cut, fs, order=2):
+
+    '''
+    :param: cut - float() cutoff frequency (Hz)
+    :param: fs - float() sampling frequency (Hz)
+    :param: order - int() filter order
+    
+    :output: b,a filter parameters
+    
+    '''
     nyq = 0.5 * fs
     cut = cut / nyq
     b, a = butter(order, [cut], btype='high')
     return b, a
 
 def butter_highpass_filter(data, cut, fs, order=2):
+    '''
+    :param: data - np.array() a dataset on which filterring is performed
+    :param: cut - float() cutoff frequency (Hz)
+    :param: fs - float() sampling frequency (Hz)
+    :param: order - int() filter order
+    
+    :output: b,a filter parameters
+    
+    '''
     b, a = butter_highpass(cut, fs, order=order)
     y = filtfilt(b, a, data)
     return y
 
-
+"""
 class PeakDetector(object):
     def __init__(self, threshold):
         self.threshold = threshold
