@@ -13,7 +13,7 @@ Debug firmware allows you to output the data from your GliaX pulse oximeter to y
 
 1. Open a serial terminal (Termite is used in this demonstration)
 2. Press 'Settings'
-3. Configure your port
+3. Configure your port (select the right COM port on your computer. On Windows OS you can check which port you are using in device manager.)
 
 <img src="https://user-images.githubusercontent.com/14543226/31546850-64932e5c-b025-11e7-800d-1ce65178edc3.PNG" alt="settings" width= "350" >
 
