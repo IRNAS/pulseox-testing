@@ -8,6 +8,13 @@ This repository contains procedures and algorithms for device testing. All neces
 4. *04_data_processing.py* is a Python script that enables you to read and plot the data, as well as find peaks.
 
 ---
+## Requirements
+04_data_processing.py requires the following:
+* Python 3
+* python3-numpy
+* python3-matplotlib
+
+---
 
 #### License
 
